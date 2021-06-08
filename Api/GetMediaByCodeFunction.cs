@@ -17,15 +17,15 @@ namespace BlazorApp.Api
         [FunctionName("GetMediaByCode")]
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, ILogger log)
         {
-            //string code = req.Query["code"];
+            string code = req.Query["code"];
 
-            //log.LogTrace("Code is: " + code);
-            //if (string.IsNullOrEmpty(code))
-            //{
-            //    var ex = new ArgumentNullException("code");
-            //    log.LogError(ex, "Error on GetMediaByCode function.");
-            //    return new BadRequestObjectResult(ex.Message);
-            //}
+            log.LogTrace("Code is: " + code);
+            if (string.IsNullOrEmpty(code))
+            {
+                var ex = new ArgumentNullException("code");
+                log.LogError(ex, "Error on GetMediaByCode function.");
+                return new BadRequestObjectResult(ex.Message);
+            }
 
             //try
             //{
