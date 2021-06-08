@@ -32,6 +32,7 @@ namespace BlazorApp.Api
                 foreach (UploadedFile file in uploadedFiles)
                 {
                     await UploadFileToCloud(container, file.FileName, file.ContentType, file.Size, file.FileContent);
+                    log.LogTrace("Uploaded file: " + file.FileName);
                 }
 
                 return new OkObjectResult(uploadedFiles.Select(x => x.FileName));
