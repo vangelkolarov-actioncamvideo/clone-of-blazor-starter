@@ -28,6 +28,7 @@ namespace BlazorApp.Api
                 BlobContainerClient container = await GetCloudContainer();
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 UploadedFile[] uploadedFiles = JsonConvert.DeserializeObject<UploadedFile[]>(requestBody);
+                log.LogTrace("uploadedFiles.Count: " + uploadedFiles.Count());
                 foreach (UploadedFile file in uploadedFiles)
                 {
                     await UploadFileToCloud(container, file.FileName, file.ContentType, file.Size, file.FileContent);
