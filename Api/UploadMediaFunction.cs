@@ -19,9 +19,7 @@ namespace BlazorApp.Api
     public static class UploadMediaFunction
     {
         [FunctionName("UploadMedia")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req, ILogger log)
         {
             try
             {
